@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const email = require('./controllers/email');
+const emailPort = require('./controllers/emailPort');
 const image = require('./controllers/image')
 const nodemailer = require('nodemailer');
 
@@ -12,6 +13,7 @@ app.use(cors());
 
 app.post('/contact', (req, res) => {email.handleEmail(req, res, nodemailer)});
 app.post('/image' , (req, res) => {image.handleApiCall(req, res)});
+app.post('/contact-port'), (req, res) => {emailPort.handleEmail(req, res, nodemailer)});
 
 const PORT = process.env.PORT;
 app.listen(PORT, ()=>{
